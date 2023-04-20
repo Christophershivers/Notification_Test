@@ -1,0 +1,24 @@
+﻿@model NotificationModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div class="form-outline">
+    <form  method="post">
+        <textarea class="form-control" id="textAreaExample" rows="4" asp-for="@Model.message"></textarea>
+        <label class="form-label" for="textAreaExample">Message</label>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+
+  <!-- MDB -->
+<script
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"
+></script>
+</div>

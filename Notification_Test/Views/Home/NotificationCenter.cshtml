@@ -1,0 +1,77 @@
+﻿@model List<NotificationModel>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@Html.AntiForgeryToken()
+@foreach(var noti in Model){
+
+    @if(noti.isRead == false){
+        <div class="card text-center">
+          <div class="card-header">@noti.id</div>
+          <div class="card-body">
+            <h5 class="card-title bolden" id="remove">@noti.isRead</h5>
+            <p class="card-text">@noti.message</p>
+            <a href="#" class="btn btn-primary">Button</a>
+          </div>
+          <div class="card-footer text-muted">2 days ago</div>
+        </div>
+    
+    
+    
+    }else{
+    
+        <div class="card text-center">
+          <div class="card-header">@noti.id</div>
+          <div class="card-body">
+            <h5 class="card-title">@noti.isRead</h5>
+            <p class="card-text">@noti.message</p>
+            <a href="#" class="btn btn-primary">Button</a>
+          </div>
+          <div class="card-footer text-muted">2 days ago</div>
+        </div>
+    
+    
+    
+    
+    }
+        
+
+}
+
+
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        setTimeout(function () {
+            update();
+        }, 5000)
+    });
+
+    const removeItem = document.querySelector('#remove');
+
+    
+
+    
+
+    function update() {
+        fetch('@Url.Action("ChangeNotification", "Home")', {
+            method: 'POST',
+            headers: {
+                'RequestVerificationToken': document.getElementsByName('__RequestVerificationToken')[0].value,
+                'Content-Type': 'application/json'
+            }
+        }).then(res => {
+            res.json
+            
+
+        })
+
+        
+        removeItem.classList.remove('bolden')
+    }
+</script>
